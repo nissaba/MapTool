@@ -12,6 +12,11 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
 
+    @IBOutlet weak var removePinITem: NSMenuItem!
+    @IBOutlet weak var removeAllPinsItem: NSMenuItem!
+    @IBOutlet weak var addOverlayItem: NSMenuItem!
+    @IBOutlet weak var removeOverlayItem: NSMenuItem!
+    @IBOutlet weak var removeAllOverlayItem: NSMenuItem!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
@@ -21,6 +26,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
 
+    @IBAction func actionMenuItemSelected(_ sender: NSMenuItem) {
+        print("ViewController:actionMenuItemSelected")
+    }
 
+    func updateMenuItems(removePin: Bool, removeAllPins: Bool, addOverlay: Bool, removeOverlay: Bool, removeAllOverlay: Bool)
+    {
+        removePinITem.isEnabled = removePin
+        removeAllPinsItem.isEnabled = removeAllPins
+        addOverlayItem.isEnabled = addOverlay
+        removeOverlayItem.isEnabled = removeOverlay
+        removeAllOverlayItem.isEnabled = removeAllOverlay
+    }
 }
 
