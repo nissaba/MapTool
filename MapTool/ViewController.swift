@@ -60,7 +60,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NewOverlayViewContr
             appDel.updateMenuItems(removePin: annotationsTableView.numberOfSelectedRows > 0,
                                    removeAllPins: annotations.count > 0,
                                    addOverlay: false,
-                                   removeOverlay: false,
+                                   removeOverlay: self.overlayTable.numberOfSelectedRows > 0,
                                    removeAllOverlay: viewPorts.count > 0)
         }
     }
@@ -110,7 +110,37 @@ class ViewController: NSViewController, NSTableViewDelegate, NewOverlayViewContr
 
     @IBAction func removeSelectedOverlay(_ sender: Any)
     {
+        var toRemove:[ViewPort] = []
+        for index in overlayTable.selectedRowIndexes
+        {
+            toRemove.append(viewPorts[index])
+        }
+        let toKeep = viewPorts.compactMap { vp -> (ViewPort?) in
+            if let _ = toRemove.firstIndex(of: vp)
+            {
+                return nil
+            }
+            return vp
+        }
 
+        viewPorts = toKeep
+        overlayController.content = viewPorts
+        overlayTable.reloadData()
+        
+        let overleysToRemove = self.mapView.overlays.compactMap { overlay -> MKOverlay? in
+            let contains: Bool = toRemove.contains(where: { vp -> Bool in
+                let coord1 = vp.midCoordinate
+                let coord2 = overlay.coordinate
+                return coord1.latitude == coord2.latitude && coord1.longitude == coord2.longitude
+            })
+            if contains == true
+            {
+                return overlay
+            }
+            return nil
+        }
+        self.mapView.removeOverlays(overleysToRemove)
+        updateMenu()
     }
 
     @IBAction func removeAllOverlay(_ sender: Any)
