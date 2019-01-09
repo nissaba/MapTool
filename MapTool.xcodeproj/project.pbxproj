@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5151641E21DA7F090053B433 /* NewOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5151641C21DA7F090053B433 /* NewOverlayViewController.swift */; };
+		518DB15721E4E6F80039FB97 /* pointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518DB15521E4E6F80039FB97 /* pointAnnotation.swift */; };
+		518DB15A21E4E8830039FB97 /* ViewPortOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518DB15921E4E8830039FB97 /* ViewPortOverlay.swift */; };
+		518DB15C21E4EB0B0039FB97 /* ViewPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518DB15B21E4EB0B0039FB97 /* ViewPort.swift */; };
 		51A9C43721D53EF4004FC05F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A9C43621D53EF4004FC05F /* AppDelegate.swift */; };
 		51A9C43921D53EF4004FC05F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A9C43821D53EF4004FC05F /* ViewController.swift */; };
 		51A9C43B21D53EF5004FC05F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51A9C43A21D53EF5004FC05F /* Assets.xcassets */; };
@@ -17,6 +20,9 @@
 
 /* Begin PBXFileReference section */
 		5151641C21DA7F090053B433 /* NewOverlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOverlayViewController.swift; sourceTree = "<group>"; };
+		518DB15521E4E6F80039FB97 /* pointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pointAnnotation.swift; sourceTree = "<group>"; };
+		518DB15921E4E8830039FB97 /* ViewPortOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPortOverlay.swift; sourceTree = "<group>"; };
+		518DB15B21E4EB0B0039FB97 /* ViewPort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPort.swift; sourceTree = "<group>"; };
 		51A9C43321D53EF4004FC05F /* MapTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51A9C43621D53EF4004FC05F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		51A9C43821D53EF4004FC05F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +72,9 @@
 				51A9C43C21D53EF5004FC05F /* Main.storyboard */,
 				51A9C43F21D53EF5004FC05F /* Info.plist */,
 				51A9C44021D53EF5004FC05F /* MapTool.entitlements */,
+				518DB15521E4E6F80039FB97 /* pointAnnotation.swift */,
+				518DB15921E4E8830039FB97 /* ViewPortOverlay.swift */,
+				518DB15B21E4EB0B0039FB97 /* ViewPort.swift */,
 			);
 			path = MapTool;
 			sourceTree = "<group>";
@@ -149,8 +158,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				51A9C43921D53EF4004FC05F /* ViewController.swift in Sources */,
+				518DB15721E4E6F80039FB97 /* pointAnnotation.swift in Sources */,
 				5151641E21DA7F090053B433 /* NewOverlayViewController.swift in Sources */,
+				518DB15A21E4E8830039FB97 /* ViewPortOverlay.swift in Sources */,
 				51A9C43721D53EF4004FC05F /* AppDelegate.swift in Sources */,
+				518DB15C21E4EB0B0039FB97 /* ViewPort.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

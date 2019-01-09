@@ -9,15 +9,17 @@
 import Cocoa
 import MapKit
 
-class ViewController: NSViewController, NSTableViewDelegate, MKMapViewDelegate, NewOverlayViewControllerDelegate {
+class ViewController: NSViewController, NSTableViewDelegate, NewOverlayViewControllerDelegate {
 
     @IBOutlet weak var latTextField: NSTextField!
     @IBOutlet weak var longTextField: NSTextField!
     @IBOutlet var overlayController: NSArrayController!
     @IBOutlet var annotationController: NSArrayController!
+    @IBOutlet var overlayTable: NSTableView!
     @IBOutlet var annotationsTableView: NSTableView!
     @IBOutlet var mapView: MKMapView!
     var annotations: [pointAnnotation] = []
+    var viewPorts: [ViewPort] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +41,15 @@ class ViewController: NSViewController, NSTableViewDelegate, MKMapViewDelegate, 
         }
     }
 
-    func didAddViewPort(north: Double, est: Double, south: Double, west: Double) {
-
+    func didAddViewPort(north: Double, est: Double, south: Double, west: Double)
+    {
+        let newViewPort: ViewPort = ViewPort(name: "VP: #\(viewPorts.count)",
+            northEst: CLLocationCoordinate2D(latitude: north, longitude: est),
+            southWest: CLLocationCoordinate2D(latitude: south, longitude: west))
+        self.viewPorts.append(newViewPort)
+        overlayController.content = self.viewPorts
+        self.mapView.addOverlay(MKPolygon(coordinates: newViewPort.boundary, count: newViewPort.boundary.count))
+        self.overlayTable.reloadData()
     }
 
     func updateMenu()
@@ -99,19 +108,17 @@ class ViewController: NSViewController, NSTableViewDelegate, MKMapViewDelegate, 
     }
 }
 
-class pointAnnotation: NSObject, MKAnnotation
+extension ViewController: MKMapViewDelegate
 {
-    @objc dynamic var label: String
-    @objc dynamic var location: String
-    var coordinate:CLLocationCoordinate2D { return coord }
-    internal var coord:CLLocationCoordinate2D
-
-    init(_ label: String, coordinate:CLLocationCoordinate2D)
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer
     {
-        self.label = label
-        self.coord = coordinate
-        self.location = "\(coordinate.latitude),\(coordinate.longitude)"
-        super.init()
+        if overlay is MKPolygon
+        {
+            let polygone = MKPolygonRenderer(overlay: overlay)
+            polygone.strokeColor = NSColor.magenta
+            polygone.fillColor = NSColor.magenta.withAlphaComponent(0.5)
+            return polygone
+        }
+        return MKOverlayRenderer()
     }
-
 }
