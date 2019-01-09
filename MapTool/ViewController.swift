@@ -50,6 +50,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NewOverlayViewContr
         overlayController.content = self.viewPorts
         self.mapView.addOverlay(MKPolygon(coordinates: newViewPort.boundary, count: newViewPort.boundary.count))
         self.overlayTable.reloadData()
+        updateMenu()
     }
 
     func updateMenu()
@@ -59,8 +60,8 @@ class ViewController: NSViewController, NSTableViewDelegate, NewOverlayViewContr
             appDel.updateMenuItems(removePin: annotationsTableView.numberOfSelectedRows > 0,
                                    removeAllPins: annotations.count > 0,
                                    addOverlay: false,
-                                   removeOverlay: overlayTable.numberOfSelectedRows > 0,
-                                   removeAllOverlay: false)
+                                   removeOverlay: false,
+                                   removeAllOverlay: viewPorts.count > 0)
         }
     }
 
@@ -108,6 +109,11 @@ class ViewController: NSViewController, NSTableViewDelegate, NewOverlayViewContr
     }
 
     @IBAction func removeSelectedOverlay(_ sender: Any)
+    {
+
+    }
+
+    @IBAction func removeAllOverlay(_ sender: Any)
     {
         viewPorts.removeAll()
         mapView.removeOverlays(mapView.overlays)
