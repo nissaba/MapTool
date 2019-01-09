@@ -360,6 +360,9 @@
                                         </menuItem>
                                         <menuItem title="Remove Overlay" id="g0B-BP-JW7">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="removeSelectedOverlay:" target="Ady-hI-5gd" id="fxn-RQ-q7L"/>
+                                            </connections>
                                         </menuItem>
                                         <menuItem title="Remove All Overlays" id="Oud-4S-hOf">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -757,6 +760,7 @@
                                                             </tableColumns>
                                                             <connections>
                                                                 <binding destination="yTh-vA-3WD" name="content" keyPath="arrangedObjects" id="190-nh-mvF"/>
+                                                                <outlet property="delegate" destination="XfG-lQ-9wD" id="xYt-6t-5ua"/>
                                                             </connections>
                                                         </tableView>
                                                     </subviews>
@@ -895,7 +899,6 @@ Gw
                                     <constraint firstAttribute="height" constant="22" id="yMg-T3-gCx"/>
                                 </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Opk-CN-yLR">
-                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="juT-qg-sbu"/>
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -907,7 +910,6 @@ Gw
                                     <constraint firstAttribute="height" constant="22" id="tls-lL-zpE"/>
                                 </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="otV-mN-13s">
-                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="BjJ-y9-X6d"/>
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -935,7 +937,6 @@ Gw
                                     <constraint firstAttribute="height" constant="22" id="Cob-XX-Hfy"/>
                                 </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="E3X-GC-G6j">
-                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="Txx-Yk-WuJ"/>
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -947,7 +948,6 @@ Gw
                                     <constraint firstAttribute="height" constant="22" id="r14-l6-kW1"/>
                                 </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="5gB-8J-iBo">
-                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="Vpw-ww-SCm"/>
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

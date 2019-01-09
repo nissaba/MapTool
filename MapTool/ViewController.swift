@@ -59,7 +59,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NewOverlayViewContr
             appDel.updateMenuItems(removePin: annotationsTableView.numberOfSelectedRows > 0,
                                    removeAllPins: annotations.count > 0,
                                    addOverlay: false,
-                                   removeOverlay: false,
+                                   removeOverlay: overlayTable.numberOfSelectedRows > 0,
                                    removeAllOverlay: false)
         }
     }
@@ -106,6 +106,15 @@ class ViewController: NSViewController, NSTableViewDelegate, NewOverlayViewContr
         self.mapView.removeAnnotations(toRemove)
         updateMenu()
     }
+
+    @IBAction func removeSelectedOverlay(_ sender: Any)
+    {
+        viewPorts.removeAll()
+        mapView.removeOverlays(mapView.overlays)
+        overlayController.content = viewPorts
+        overlayTable.reloadData()
+        updateMenu()
+    }
 }
 
 extension ViewController: MKMapViewDelegate
@@ -115,8 +124,7 @@ extension ViewController: MKMapViewDelegate
         if overlay is MKPolygon
         {
             let polygone = MKPolygonRenderer(overlay: overlay)
-            polygone.strokeColor = NSColor.magenta
-            polygone.fillColor = NSColor.magenta.withAlphaComponent(0.5)
+            polygone.fillColor = NSColor.magenta.withAlphaComponent(0.4)
             return polygone
         }
         return MKOverlayRenderer()
