@@ -9,13 +9,6 @@
 import Cocoa
 import MapKit
 
-class ViewPortOverlay: NSObject, MKOverlay {
-    var coordinate: CLLocationCoordinate2D
-    var boundingMapRect: MKMapRect
-
-    init(viewPort: ViewPort)
-    {
-        boundingMapRect = viewPort.overlayBoundingMapRect
-        coordinate = viewPort.midCoordinate
-    }
+class ViewPortOverlay: MKPolygon {
+    var name: String?
 }

@@ -48,7 +48,9 @@ class ViewController: NSViewController, NSTableViewDelegate, NewOverlayViewContr
             southWest: CLLocationCoordinate2D(latitude: south, longitude: west))
         self.viewPorts.append(newViewPort)
         overlayController.content = self.viewPorts
-        self.mapView.addOverlay(MKPolygon(coordinates: newViewPort.boundary, count: newViewPort.boundary.count))
+        let overlay: ViewPortOverlay = ViewPortOverlay(coordinates: newViewPort.boundary, count: newViewPort.boundary.count)
+        overlay.name = newViewPort.name
+        self.mapView.addOverlay(overlay)
         self.overlayTable.reloadData()
         updateMenu()
     }
@@ -129,9 +131,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NewOverlayViewContr
         
         let overleysToRemove = self.mapView.overlays.compactMap { overlay -> MKOverlay? in
             let contains: Bool = toRemove.contains(where: { vp -> Bool in
-                let coord1 = vp.midCoordinate
-                let coord2 = overlay.coordinate
-                return coord1.latitude == coord2.latitude && coord1.longitude == coord2.longitude
+                return vp.name == (overlay as? ViewPortOverlay)?.name
             })
             if contains == true
             {
