@@ -21,6 +21,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NewOverlayViewContr
     var annotations: [pointAnnotation] = []
     var viewPorts: [ViewPort] = []
 
+    //MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
         annotationController.content = annotations
@@ -30,7 +31,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NewOverlayViewContr
 
     override var representedObject: Any? {
         didSet {
-        // Update the view, if already loaded.
+            // Update the view, if already loaded.
         }
     }
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
@@ -61,7 +62,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NewOverlayViewContr
         {
             appDel.updateMenuItems(removePin: annotationsTableView.numberOfSelectedRows > 0,
                                    removeAllPins: annotations.count > 0,
-                                   addOverlay: false,
+                                   addOverlay: true,
                                    removeOverlay: self.overlayTable.numberOfSelectedRows > 0,
                                    removeAllOverlay: viewPorts.count > 0)
         }
@@ -69,6 +70,13 @@ class ViewController: NSViewController, NSTableViewDelegate, NewOverlayViewContr
 
     func tableViewSelectionDidChange(_ notification: Notification) {
         updateMenu()
+    }
+
+    @IBAction func overlayDoubleTap(_ sender: Any)
+    {
+        let selectedIndex = overlayTable.selectedRow
+        self.mapView.setVisibleMapRect(viewPorts[selectedIndex].overlayBoundingMapRect, edgePadding: NSEdgeInsets(top: 20, left: 20, bottom: 20, right: 20), animated: true)
+
     }
 
     @IBAction func addAnnotation(_ sender: Any) {
@@ -79,6 +87,11 @@ class ViewController: NSViewController, NSTableViewDelegate, NewOverlayViewContr
         mapView.addAnnotation(annot)
         annotationController.content = annotations
         updateMenu()
+    }
+
+    @IBAction func addOverlayItem(_ sender: Any)
+    {
+        self.performSegue(withIdentifier: "addOverlaySegue", sender: self)
     }
 
     @IBAction func clearPins(_ sender: Any)

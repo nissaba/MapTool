@@ -342,7 +342,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Pins / Overlays" autoenablesItems="NO" id="PJH-98-q1o">
                                     <items>
-                                        <menuItem title="Remove Pin" id="aye-9i-E8t">
+                                        <menuItem title="Remove Selected Pins" id="aye-9i-E8t">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="deleteSelectedPin:" target="Ady-hI-5gd" id="nYh-jh-xIk"/>
@@ -357,8 +357,11 @@
                                         <menuItem isSeparatorItem="YES" id="9s4-HT-Ys8"/>
                                         <menuItem title="Add Overlay" id="G8Z-sg-Zbk">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="addOverlayItem:" target="Ady-hI-5gd" id="7Hz-a2-uE4"/>
+                                            </connections>
                                         </menuItem>
-                                        <menuItem title="Remove Overlay" id="g0B-BP-JW7">
+                                        <menuItem title="Remove Selected Overlays" id="g0B-BP-JW7">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="removeSelectedOverlay:" target="Ady-hI-5gd" id="fxn-RQ-q7L"/>
@@ -418,7 +421,7 @@
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="MapTool" customModuleProvider="target">
                     <connections>
-                        <outlet property="addOverlayItem" destination="G8Z-sg-Zbk" id="e1p-CE-onF"/>
+                        <outlet property="addOverlayItem" destination="G8Z-sg-Zbk" id="8i7-S3-mlP"/>
                         <outlet property="removeAllOverlayItem" destination="Oud-4S-hOf" id="8nB-bS-MIw"/>
                         <outlet property="removeAllPinsItem" destination="8YD-lv-mvD" id="9RI-7g-fnR"/>
                         <outlet property="removeOverlayItem" destination="g0B-BP-JW7" id="HNu-Gn-e8e"/>
@@ -543,7 +546,7 @@
                                                     <rect key="frame" x="1" y="0.0" width="325" height="194"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="JXm-WQ-Ppc" viewBased="YES" id="Zup-qj-KmA">
+                                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" autosaveColumns="NO" rowSizeStyle="automatic" headerView="JXm-WQ-Ppc" viewBased="YES" id="Zup-qj-KmA">
                                                             <rect key="frame" x="0.0" y="0.0" width="325" height="169"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -684,7 +687,7 @@
                                                     <rect key="frame" x="1" y="0.0" width="325" height="195"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="42" rowSizeStyle="automatic" headerView="OsP-pB-QfI" viewBased="YES" id="q7I-De-lnA">
+                                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" autosaveColumns="NO" rowHeight="42" rowSizeStyle="automatic" headerView="OsP-pB-QfI" viewBased="YES" id="q7I-De-lnA">
                                                             <rect key="frame" x="0.0" y="0.0" width="325" height="170"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -727,41 +730,9 @@
                                                                         </tableCellView>
                                                                     </prototypeCellViews>
                                                                 </tableColumn>
-                                                                <tableColumn width="203" minWidth="40" maxWidth="1000" id="6f2-nE-pEl">
-                                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                                        <font key="font" metaFont="smallSystem"/>
-                                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                                                    </tableHeaderCell>
-                                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="USq-G9-1aO">
-                                                                        <font key="font" metaFont="system"/>
-                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                    </textFieldCell>
-                                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                                                    <prototypeCellViews>
-                                                                        <tableCellView id="ebD-qc-Y66">
-                                                                            <rect key="frame" x="120" y="1" width="203" height="42"/>
-                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                                            <subviews>
-                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YPs-yO-PPp">
-                                                                                    <rect key="frame" x="0.0" y="25" width="203" height="17"/>
-                                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="4Wo-aV-0Tx">
-                                                                                        <font key="font" metaFont="system"/>
-                                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                                    </textFieldCell>
-                                                                                </textField>
-                                                                            </subviews>
-                                                                            <connections>
-                                                                                <outlet property="textField" destination="YPs-yO-PPp" id="4Gn-Jb-uXk"/>
-                                                                            </connections>
-                                                                        </tableCellView>
-                                                                    </prototypeCellViews>
-                                                                </tableColumn>
                                                             </tableColumns>
                                                             <connections>
+                                                                <action trigger="doubleAction" selector="overlayDoubleTap:" target="XfG-lQ-9wD" id="DSg-25-FFi"/>
                                                                 <binding destination="yTh-vA-3WD" name="content" keyPath="arrangedObjects" id="190-nh-mvF"/>
                                                                 <outlet property="delegate" destination="XfG-lQ-9wD" id="xYt-6t-5ua"/>
                                                             </connections>

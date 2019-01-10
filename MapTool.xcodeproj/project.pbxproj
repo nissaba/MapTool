@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5149836A21E792D400B34A22 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5149836921E792D400B34A22 /* MapKit.framework */; };
 		5151641E21DA7F090053B433 /* NewOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5151641C21DA7F090053B433 /* NewOverlayViewController.swift */; };
 		518DB15721E4E6F80039FB97 /* pointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518DB15521E4E6F80039FB97 /* pointAnnotation.swift */; };
 		518DB15A21E4E8830039FB97 /* ViewPortOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518DB15921E4E8830039FB97 /* ViewPortOverlay.swift */; };
@@ -15,10 +16,10 @@
 		51A9C43921D53EF4004FC05F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A9C43821D53EF4004FC05F /* ViewController.swift */; };
 		51A9C43B21D53EF5004FC05F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51A9C43A21D53EF5004FC05F /* Assets.xcassets */; };
 		51A9C43E21D53EF5004FC05F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51A9C43C21D53EF5004FC05F /* Main.storyboard */; };
-		51A9C44821D53F18004FC05F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A9C44721D53F18004FC05F /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5149836921E792D400B34A22 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5151641C21DA7F090053B433 /* NewOverlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOverlayViewController.swift; sourceTree = "<group>"; };
 		518DB15521E4E6F80039FB97 /* pointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pointAnnotation.swift; sourceTree = "<group>"; };
 		518DB15921E4E8830039FB97 /* ViewPortOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPortOverlay.swift; sourceTree = "<group>"; };
@@ -30,7 +31,6 @@
 		51A9C43D21D53EF5004FC05F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		51A9C43F21D53EF5004FC05F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51A9C44021D53EF5004FC05F /* MapTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MapTool.entitlements; sourceTree = "<group>"; };
-		51A9C44721D53F18004FC05F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,7 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51A9C44821D53F18004FC05F /* MapKit.framework in Frameworks */,
+				5149836A21E792D400B34A22 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +82,7 @@
 		51A9C44621D53F18004FC05F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				51A9C44721D53F18004FC05F /* MapKit.framework */,
+				5149836921E792D400B34A22 /* MapKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -119,6 +119,17 @@
 				TargetAttributes = {
 					51A9C43221D53EF4004FC05F = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.HardenedRuntime = {
+								enabled = 1;
+							};
+							com.apple.Maps.Mac = {
+								enabled = 1;
+							};
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -303,6 +314,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = FX3L3D3E4M;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = MapTool/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -322,6 +334,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = FX3L3D3E4M;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = MapTool/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
