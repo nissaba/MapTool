@@ -32,6 +32,16 @@ class NewOverlayViewController: NSViewController {
         let south:Double = (southTxtField.doubleValue)
         let west:Double = (westTxtField.doubleValue)
 
+        guard north > south, east > west else
+        {
+            let alert = NSAlert()
+            alert.messageText = "North as to be greater then south and east as to be greater then west"
+            alert.informativeText = "North > South & East > West"
+            alert.addButton(withTitle: "Ok")
+            alert.runModal()
+            return
+        }
+
         self.delegate?.didAddViewPort(north: north, est: east, south: south, west: west)
         self.dismiss(self)
     }

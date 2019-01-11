@@ -13,12 +13,20 @@ class ViewPort: NSObject {
 
     @objc dynamic var name: String?
     var boundary: [CLLocationCoordinate2D] = []
-
+    var overlay: ViewPortOverlay
     var midCoordinate = CLLocationCoordinate2D()
     var overlayTopLeftCoordinate = CLLocationCoordinate2D()
     var overlayTopRightCoordinate = CLLocationCoordinate2D()
     var overlayBottomLeftCoordinate = CLLocationCoordinate2D()
     var overlayBottomRightCoordinate = CLLocationCoordinate2D()
+    var color: NSColor = {
+        var color: NSColor?
+        var hue: CGFloat = CGFloat(Double(Int(arc4random()) % 256) / 256.0) //  0.0 to 1.0
+        var saturation: CGFloat = CGFloat((Double(Int(arc4random()) % 128) / 256.0) + 0.5) //  0.5 to 1.0, away from white
+        var brightness: CGFloat = CGFloat((Double(Int(arc4random()) % 128) / 256.0) + 0.5) //  0.5 to 1.0, away from black
+        color = NSColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1)
+        return color!
+    }()
 
     var overlayBoundingMapRect: MKMapRect {
         get {
@@ -43,6 +51,9 @@ class ViewPort: NSObject {
         overlayBottomRightCoordinate = CLLocationCoordinate2D(latitude: southWest.latitude, longitude: northEst.longitude)
         midCoordinate = ViewPort.middlePointOfListMarkers(listCoords: [southWest, northEst])
         boundary = [overlayTopLeftCoordinate, overlayTopRightCoordinate, overlayBottomRightCoordinate, overlayBottomLeftCoordinate]
+        self.overlay = ViewPortOverlay(coordinates: self.boundary, count: self.boundary.count)
+        self.overlay.color = self.color
+
     }
 
     //        /** Degrees to Radian **/

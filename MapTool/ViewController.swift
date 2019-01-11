@@ -49,9 +49,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NewOverlayViewContr
             southWest: CLLocationCoordinate2D(latitude: south, longitude: west))
         self.viewPorts.append(newViewPort)
         overlayController.content = self.viewPorts
-        let overlay: ViewPortOverlay = ViewPortOverlay(coordinates: newViewPort.boundary, count: newViewPort.boundary.count)
-        overlay.name = newViewPort.name
-        self.mapView.addOverlay(overlay)
+        self.mapView.addOverlay(newViewPort.overlay)
         self.overlayTable.reloadData()
         updateMenu()
     }
@@ -130,28 +128,16 @@ class ViewController: NSViewController, NSTableViewDelegate, NewOverlayViewContr
         {
             toRemove.append(viewPorts[index])
         }
-        let toKeep = viewPorts.compactMap { vp -> (ViewPort?) in
-            if let _ = toRemove.firstIndex(of: vp)
-            {
-                return nil
-            }
-            return vp
-        }
+        viewPorts = viewPorts.compactMap({ vp -> ViewPort? in
+            return toRemove.contains(vp) == true ? nil : vp
+        })
 
-        viewPorts = toKeep
         overlayController.content = viewPorts
-        overlayTable.reloadData()
-        
-        let overleysToRemove = self.mapView.overlays.compactMap { overlay -> MKOverlay? in
-            let contains: Bool = toRemove.contains(where: { vp -> Bool in
-                return vp.name == (overlay as? ViewPortOverlay)?.name
-            })
-            if contains == true
-            {
-                return overlay
-            }
-            return nil
+
+        let overleysToRemove = toRemove.map { vp in
+            return vp.overlay
         }
+        overlayTable.reloadData()
         self.mapView.removeOverlays(overleysToRemove)
         updateMenu()
     }
@@ -173,7 +159,7 @@ extension ViewController: MKMapViewDelegate
         if overlay is MKPolygon
         {
             let polygone = MKPolygonRenderer(overlay: overlay)
-            polygone.fillColor = NSColor.magenta.withAlphaComponent(0.4)
+            polygone.fillColor = (overlay as! ViewPortOverlay).color?.withAlphaComponent(0.6)
             return polygone
         }
         return MKOverlayRenderer()

@@ -11,4 +11,5 @@ import MapKit
 
 class ViewPortOverlay: MKPolygon {
     var name: String?
+    var color: NSColor?
 }
