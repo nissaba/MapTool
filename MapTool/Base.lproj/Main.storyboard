@@ -472,10 +472,7 @@
                                                 <rect key="frame" x="0.0" y="195" width="327" height="37"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TUW-tG-0aE">
-                                                        <rect key="frame" x="6" y="8" width="26" height="21"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="22" id="fz8-eQ-GYP"/>
-                                                        </constraints>
+                                                        <rect key="frame" x="6" y="8" width="27" height="21"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Lat:" id="gfE-L4-iBp">
                                                             <font key="font" usesAppearanceFont="YES"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -483,7 +480,7 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l6o-lg-QbU">
-                                                        <rect key="frame" x="38" y="8" width="85" height="21"/>
+                                                        <rect key="frame" x="39" y="8" width="85" height="21"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="dit-d4-ycE">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -491,7 +488,7 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RCM-7J-QBL">
-                                                        <rect key="frame" x="129" y="8" width="38" height="21"/>
+                                                        <rect key="frame" x="130" y="8" width="38" height="21"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Long:" id="3no-Tw-A7q">
                                                             <font key="font" usesAppearanceFont="YES"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -499,7 +496,7 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kyo-nY-f4x">
-                                                        <rect key="frame" x="173" y="8" width="85" height="21"/>
+                                                        <rect key="frame" x="174" y="8" width="84" height="21"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Xl9-fD-hHZ">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -567,10 +564,9 @@
                                                                             <rect key="frame" x="1" y="1" width="116" height="17"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
-                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gDm-3C-rBv">
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="gDm-3C-rBv">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="116" height="17"/>
-                                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="4e3-If-6RH">
+                                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="4e3-If-6RH">
                                                                                         <font key="font" metaFont="system"/>
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -580,6 +576,11 @@
                                                                                     </connections>
                                                                                 </textField>
                                                                             </subviews>
+                                                                            <constraints>
+                                                                                <constraint firstItem="gDm-3C-rBv" firstAttribute="centerY" secondItem="QFD-0J-9nv" secondAttribute="centerY" id="CeZ-2e-cXQ"/>
+                                                                                <constraint firstItem="gDm-3C-rBv" firstAttribute="leading" secondItem="QFD-0J-9nv" secondAttribute="leading" constant="2" id="cQG-KG-ShH"/>
+                                                                                <constraint firstItem="gDm-3C-rBv" firstAttribute="centerX" secondItem="QFD-0J-9nv" secondAttribute="centerX" id="tqe-mG-bDf"/>
+                                                                            </constraints>
                                                                             <connections>
                                                                                 <outlet property="textField" destination="gDm-3C-rBv" id="sHB-bq-FPd"/>
                                                                             </connections>
@@ -712,9 +713,8 @@
                                                                             <rect key="frame" x="1" y="1" width="116" height="42"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
-                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ehp-be-7sz">
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ehp-be-7sz">
                                                                                     <rect key="frame" x="0.0" y="25" width="116" height="17"/>
-                                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="HGz-Zj-y2j">
                                                                                         <font key="font" metaFont="system"/>
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -725,6 +725,11 @@
                                                                                     </connections>
                                                                                 </textField>
                                                                             </subviews>
+                                                                            <constraints>
+                                                                                <constraint firstItem="ehp-be-7sz" firstAttribute="leading" secondItem="uOK-nq-Gce" secondAttribute="leading" constant="2" id="QOg-9t-h8S"/>
+                                                                                <constraint firstItem="ehp-be-7sz" firstAttribute="top" secondItem="uOK-nq-Gce" secondAttribute="top" id="VsD-hk-tOv"/>
+                                                                                <constraint firstItem="ehp-be-7sz" firstAttribute="centerX" secondItem="uOK-nq-Gce" secondAttribute="centerX" id="yRc-Io-99F"/>
+                                                                            </constraints>
                                                                             <connections>
                                                                                 <outlet property="textField" destination="ehp-be-7sz" id="gHP-ZA-eod"/>
                                                                             </connections>
